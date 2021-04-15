@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <link rel="icon" type="image/svg+xml" href="favicon.svg" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Vite App</title>
+    
+    <link rel="preconnect" href="https://fonts.gstatic.com">
+    <link href="https://fonts.googleapis.com/css2?family=Varela+Round&display=swap" rel="stylesheet">
+    
+    <link rel="preconnect" href="https://fonts.gstatic.com">
+    <link href="https://fonts.googleapis.com/css2?family=Pacifico&family=Space+Mono&family=Varela+Round&display=swap" rel="stylesheet">
+
+    <link href="https://unpkg.com/tailwindcss@^2/dist/tailwind.min.css" rel="stylesheet">
+
+    <style>
+        body {
+            margin: 0;
+            -webkit-font-smoothing: antialiased;
+        }
+        .center-container{
+          top:50%;
+          transform:translate(-50%,-50%);
+          left:50%;
+        }
+        .font-verela{
+          font-family: 'Varela Round', sans-serif;
+          font-weight: bolder;
+          font-style: italic;
+          font-size: 30px;
+        }
+        .font-space-mono{
+          font-family: 'Space Mono', monospace;
+          font-size: 20px;
+        }
+        
+
+    </style>
+  </head>
+  <body>
+    <div id="app">
+      <div class="absolute text-white text-center center-container">
+        <h1 class="font-space-mono uppercase tracking-wide">Chirag Bargoojar</h1>
+        <p class="font-verela">
+          Overly Enthusiastic about New Technology.
+          Working on new skills Everyday.
+        </p>
+        <a href="https://github.com/ChiragKr04" 
+        class="border-2 px-4 py-2 rounded-lg mt-8 hover:bg-white hover:text-gray-800 inline-block">
+          View My Work
+        </a>
+      </div>
+    </div>
+    <script type="module" src="/main.js"></script>
+  </body>
+</html>
