@@ -18,6 +18,8 @@ gui.add(world.plane, 'height', 1, 500).onChange(generatePlane)
 gui.add(world.plane, 'widthSegments', 1, 100).onChange(generatePlane)
 gui.add(world.plane, 'heightSegments', 1, 100).onChange(generatePlane)
 
+gui.close();
+
 function generatePlane() {
   planeMesh.geometry.dispose()
   planeMesh.geometry = new THREE.PlaneGeometry(
