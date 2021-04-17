@@ -8,8 +8,8 @@ const world = {
   plane: {
     width: 400,
     height: 400,
-    widthSegments: 50,
-    heightSegments: 50
+    widthSegments: 60,
+    heightSegments: 60
   }
 }
 gui.add(world.plane, 'width', 1, 500).onChange(generatePlane)
@@ -75,8 +75,15 @@ renderer.setSize(innerWidth, innerHeight)
 renderer.setPixelRatio(devicePixelRatio)
 document.body.appendChild(renderer.domElement)
 
-new OrbitControls(camera, renderer.domElement)
-camera.position.z = 100
+const controls = new OrbitControls(camera, renderer.domElement)
+camera.position.x = 0
+camera.position.y = -195
+camera.position.z = -190
+controls.minDistance = 100
+controls.maxDistance = 350
+
+// camera.position.set( -90, -20, -90);
+controls.update();
 
 const planeGeometry = new THREE.PlaneGeometry(
   world.plane.width,
@@ -194,3 +201,60 @@ addEventListener('mousemove', (event) => {
   mouse.x = (event.clientX / innerWidth) * 2 - 1
   mouse.y = -(event.clientY / innerHeight) * 2 + 1
 })
+
+let materialArray = []
+    let texture_ft = new THREE.TextureLoader().load('kenon_star_ft.jpg')
+    let texture_bk = new THREE.TextureLoader().load('kenon_star_bk.jpg')
+    let texture_up = new THREE.TextureLoader().load('kenon_star_up.jpg')
+    let texture_dn = new THREE.TextureLoader().load('kenon_star_dn.jpg')
+    let texture_rt = new THREE.TextureLoader().load('kenon_star_rt.jpg')
+    let texture_lf = new THREE.TextureLoader().load('kenon_star_lf.jpg')
+
+
+    materialArray.push(new THREE.MeshBasicMaterial({map:texture_ft}))
+    materialArray.push(new THREE.MeshBasicMaterial({map:texture_bk}))
+    materialArray.push(new THREE.MeshBasicMaterial({map:texture_up}))
+    materialArray.push(new THREE.MeshBasicMaterial({map:texture_dn}))
+    materialArray.push(new THREE.MeshBasicMaterial({map:texture_rt}))
+    materialArray.push(new THREE.MeshBasicMaterial({map:texture_lf}))
+
+    for (let i =0 ; i<6 ; i++){
+        materialArray[i].side = THREE.BackSide
+    }
+
+    let skyboxgeo = new THREE.BoxGeometry(1000,1000,1000)
+    let skybox = new THREE.Mesh(skyboxgeo,materialArray)
+
+    scene.add(skybox)
+    animate()
+
+document.getElementById("glideBtn").onclick = glideAnimate;
+function glideAnimate(){
+
+	const glideCamera = {
+		x:camera.position.x,y:camera.position.y,z:camera.position.z
+	}
+	const initCamera = {
+		x:0,y:-195,z:-20
+	}
+	gsap.to(glideCamera, {
+    x:initCamera.x,
+		y:initCamera.y,
+		z:initCamera.z,
+      duration: 1,
+      onUpdate: () => {
+		camera.position.set(glideCamera.x,glideCamera.y,glideCamera.z)
+       	controls.update()
+      },
+	  onComplete: ()=> {
+		  window.open("https://github.com/ChiragKr04","_self")
+	  }
+    })
+
+}
+window.addEventListener('resize', onWIndowResize, false)
+function onWIndowResize(){
+  camera.aspect = innerWidth/innerHeight
+  camera.updateProjectionMatrix()
+  renderer.setSize(innerWidth, innerHeight)
+}
