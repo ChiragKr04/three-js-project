@@ -203,12 +203,12 @@ addEventListener('mousemove', (event) => {
 })
 
 let materialArray = []
-    let texture_ft = new THREE.TextureLoader().load('kenon_star_ft.jpg')
-    let texture_bk = new THREE.TextureLoader().load('kenon_star_bk.jpg')
-    let texture_up = new THREE.TextureLoader().load('kenon_star_up.jpg')
-    let texture_dn = new THREE.TextureLoader().load('kenon_star_dn.jpg')
-    let texture_rt = new THREE.TextureLoader().load('kenon_star_rt.jpg')
-    let texture_lf = new THREE.TextureLoader().load('kenon_star_lf.jpg')
+    let texture_ft = new THREE.TextureLoader().load('https://raw.githubusercontent.com/ChiragKr04/three-js-project/master/kenon_star_ft.jpg')
+    let texture_bk = new THREE.TextureLoader().load('https://raw.githubusercontent.com/ChiragKr04/three-js-project/master/kenon_star_bk.jpg')
+    let texture_up = new THREE.TextureLoader().load('https://raw.githubusercontent.com/ChiragKr04/three-js-project/master/kenon_star_up.jpg')
+    let texture_dn = new THREE.TextureLoader().load('https://raw.githubusercontent.com/ChiragKr04/three-js-project/master/kenon_star_dn.jpg')
+    let texture_rt = new THREE.TextureLoader().load('https://raw.githubusercontent.com/ChiragKr04/three-js-project/master/kenon_star_rt.jpg')
+    let texture_lf = new THREE.TextureLoader().load('https://raw.githubusercontent.com/ChiragKr04/three-js-project/master/kenon_star_lf.jpg')
 
 
     materialArray.push(new THREE.MeshBasicMaterial({map:texture_ft}))
